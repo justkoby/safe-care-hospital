@@ -1,0 +1,140 @@
+/* Home Page Custom Styles */
+
+.new-hero-section {
+  text-align: center;
+  padding: clamp(120px, 12vw, 160px) 0 clamp(350px, 38vw, 650px);
+  background-image: url('/Assets/images/hospital-building.jpg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+.new-hero-title {
+  font-size: clamp(2.4rem, 4.8vw, 4.1rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+.new-hero-subtext {
+  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+  color: var(--text-readable);
+  max-width: 740px;
+  margin: 0 auto 35px;
+  line-height: 1.6;
+}
+
+.new-hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-services {
+  background-color: var(--primary-green);
+  color: white !important;
+  font-weight: 700;
+  padding: 12px 32px;
+  border-radius: 50px;
+  border: 2px solid var(--primary-green);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 182, 74, 0.2);
+}
+
+.btn-services:hover {
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 182, 74, 0.3);
+}
+
+.btn-appointment {
+  background-color: white;
+  color: var(--text-main) !important;
+  font-weight: 700;
+  padding: 12px 32px;
+  border-radius: 50px;
+  border: 2px solid #cbd5e1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-appointment:hover {
+  border-color: var(--primary-green);
+  color: var(--primary-green) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Dynamic Word Carousel Styles */
+.dynamic-word-wrapper {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  overflow: hidden;
+  height: 1.25em; /* Match line height */
+  margin: 0 0.15em;
+}
+
+.dynamic-word {
+  display: inline-block;
+  color: var(--primary-green);
+  font-weight: 800;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  white-space: nowrap;
+}
+
+.dynamic-word.enter {
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+.dynamic-word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dynamic-word.exit {
+  opacity: 0;
+  transform: translateY(-25px);
+}
+
+@media (max-width: 991px) {
+  .new-hero-section {
+    background-size: 160% auto;
+    padding-bottom: 320px;
+  }
+}
+
+@media (max-width: 767px) {
+  .new-hero-section {
+    background-size: 200% auto;
+    padding-bottom: 280px;
+  }
+}
+
+@media (max-width: 575px) {
+  .new-hero-section {
+    background-size: 250% auto;
+    padding-bottom: 240px;
+  }
+  .new-hero-actions {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  .new-hero-actions a {
+    width: 100%;
+    text-align: center;
+  }
+}
+

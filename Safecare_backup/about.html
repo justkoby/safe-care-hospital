@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>About Us | Safe Care Hospital</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/css/site-overrides.css">
+    
+    <style>
+        :root {
+            --primary-green: #00b64a;
+            --primary-blue: #007bff;
+            --accent-red: #e8272a;
+            --text-dark: #1a1a1a;
+            --text-muted: #64748b;
+            --mint-bg: #f2f9f5; 
+        }
+
+        body, html {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+        }
+
+        /* --- NAVBAR (Same as Homepage) --- */
+        .navbar { 
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent; 
+            padding: 25px 0;
+        }
+        .navbar-brand img { height: 70px; width: auto; }
+        .nav-link {
+            font-weight: 600;
+            color: var(--text-dark) !important;
+            text-transform: capitalize;
+            padding: 8px 18px !important;
+        }
+
+        /* --- MODERN ABOUT HERO --- */
+        .about-hero {
+            padding: 160px 0 100px;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 182, 74, 0.04) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
+        }
+
+        .about-badge {
+            background: var(--mint-bg);
+            color: var(--primary-green);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .about-heading {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+        }
+
+        .about-lead {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 60px;
+            line-height: 1.7;
+        }
+
+        /* Staggered Mosaic Gallery */
+        .image-mosaic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            align-items: end;
+        }
+
+        .mosaic-item {
+            border-radius: 24px;
+            width: 100%;
+            object-fit: cover;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+            transition: 0.4s ease;
+        }
+
+        .mosaic-item:hover { transform: translateY(-10px); }
+        .h-sm { height: 280px; }
+        .h-md { height: 380px; }
+        .h-lg { height: 480px; }
+
+        .exp-floating {
+            position: absolute;
+            bottom: 30px;
+            right: -10px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #f1f5f9;
+            z-index: 20;
+        }
+
+        .exp-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+        }
+
+        /* --- FOOTER (Same as Homepage) --- */
+        .footer-section {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 80px 0 40px;
+        }
+        .footer-logo { height: 60px; margin-bottom: 25px; }
+        .footer-col-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-col-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+        .footer-link {
+            color: #a1a1a1;
+            text-decoration: none;
+            transition: 0.3s;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .footer-link:hover { color: var(--primary-green); padding-left: 5px; }
+        .footer-contact-item { display: flex; gap: 15px; margin-bottom: 20px; color: #a1a1a1; }
+        .footer-contact-icon { color: var(--primary-green); font-size: 1.1rem; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; margin-top: 50px; }
+
+        @media (max-width: 991px) {
+            .image-mosaic { grid-template-columns: 1fr 1fr; }
+            .mosaic-item { height: 250px !important; }
+            .navbar { position: relative; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+<style>
+    :root {
+        --primary-green: #238751; 
+        --text-dark: #1a1a1a;
+    }
+
+    /* The 'fixed-top' class requires a solid background to stay visible over content */
+    .navbar {
+        background-color: #ffffff !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
+        padding: 15px 0;
+        /* Force it to stay at the very top */
+        z-index: 1030; 
+    }
+
+    .navbar-brand img {
+        height: 60px;
+    }
+
+    .nav-link {
+        font-weight: 700;
+        color: var(--text-dark) !important;
+        margin: 0 10px;
+        position: relative;
+    }
+
+    /* Active Underline - Specific to About Page */
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary-green);
+        border-radius: 2px;
+    }
+
+    .btn-success.rounded-pill {
+        background-color: var(--primary-green) !important;
+        border: none;
+        padding: 10px 30px !important;
+        font-weight: 700;
+        color: #fff !important;
+    }
+
+    /* CRITICAL: This prevents the Hero from hiding behind the sticky nav */
+    body {
+        padding-top: 90px !important; 
+    }
+
+    @media (max-width: 991px) {
+        body { padding-top: 80px !important; }
+        .navbar-collapse {
+            background: #fff;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="Assets/images/safe care.png" alt="Safe Care Hospital">
+        </a>
+        
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                <li class="nav-item ms-lg-3">
+                    <a href="tel:+233533990935" class="btn btn-success px-4 fw-bold rounded-pill">Emergency</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <header class="about-hero">
+        <div class="container text-center">
+            <div data-aos="fade-up">
+                <span class="about-badge">About Safe Care Hospital</span>
+                <h1 class="about-heading">Compassionate Care for <br>Every Family.</h1>
+                <p class="about-lead">
+                    Delivering compassionate, accessible, and reliable healthcare to Anyirawase and surrounding communities. We believe everyone deserves premium medical attention.
+                </p>
+            </div>
+
+            <div class="image-mosaic" data-aos="fade-up" data-aos-delay="200">
+                <img src="Assets/images/Facility 8.png" class="mosaic-item h-sm" alt="Clinic">
+                
+                <div style="position: relative;">
+                    <img src="Assets/images/Facility 2.png" class="mosaic-item h-lg" alt="Doctor">
+                    <div class="exp-floating d-none d-lg-flex">
+                        <div class="exp-number">15+</div>
+                        <div class="text-start">
+                            <div class="fw-bold text-dark">Years of</div>
+                            <div class="small text-muted">Excellence</div>
+                        </div>
+                    </div>
+                </div>
+
+                <img src="Assets/images/Facility 7.png" class="mosaic-item h-md" alt="Lab">
+                
+                <img src="Assets/images/Facility 6.png" class="mosaic-item h-sm" alt="Patient Care">
+            </div>
+        </div>
+    </header>
+
+    <style>
+        .who-we-are-section {
+            padding: 100px 0;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .section-tag {
+            color: var(--primary-green);
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .who-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .who-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        /* Mission & Vision Cards */
+        .mv-card {
+            padding: 40px;
+            border-radius: 30px;
+            height: 100%;
+            transition: 0.4s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .mission-card {
+            background-color: var(--mint-bg);
+            border-color: rgba(0, 182, 74, 0.1);
+        }
+
+        .vision-card {
+            background-color: #f0f7ff; /* Soft Blue Tint */
+            border-color: rgba(0, 123, 255, 0.1);
+        }
+
+        .mv-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            background: #ffffff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .mv-title {
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .mv-text {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            border-left: 4px solid var(--primary-green);
+            padding-left: 25px;
+            margin: 40px 0;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+    </style>
+
+    <section class="who-we-are-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <span class="section-tag">Who We Are</span>
+                    <h2 class="who-title">Serving Anyirawase Since 2023</h2>
+                    <p class="who-text">
+                        Safe Care Hospital is a primary hospital located in Anyirawase in the Volta Region of Ghana. 
+                        Founded with a clear mission, we provide quality, affordable, and patient-centered healthcare to our community and surrounding districts.
+                    </p>
+                    <div class="highlight-box">
+                        "As the only hospital within the district, we play a critical role in ensuring access to safe, timely, and professional medical services."
+                    </div>
+                    <p class="who-text">
+                        We are committed to clinical excellence, ethical medical practice, and compassionate care in everything we do.
+                    </p>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+                            <div class="mv-card mission-card">
+                                <div class="mv-icon text-success">
+                                    <i class="fa-solid fa-bullseye"></i>
+                                </div>
+                                <h3 class="mv-title">Our Mission</h3>
+                                <p class="mv-text">
+                                    To deliver accessible, high-quality, and compassionate healthcare services that prioritize patient safety, dignity, and well-being.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+                            <div class="mv-card vision-card">
+                                <div class="mv-icon text-primary">
+                                    <i class="fa-solid fa-eye"></i>
+                                </div>
+                                <h3 class="mv-title">Our Vision</h3>
+                                <p class="mv-text">
+                                    To become a leading primary healthcare provider in the Volta Region, recognized for excellence in patient care, emergency response, 
+                                    and maternal health services.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .values-section {
+            padding: 100px 0;
+            background-color: #ffffff;
+        }
+
+        /* The 3-2 Grid Logic */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* 6-column base for perfect centering */
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .value-card {
+            background: #ffffff;
+            padding: 50px 40px 40px;
+            border-radius: 20px;
+            border: 1px solid #f1f5f9;
+            position: relative;
+            transition: all 0.3s ease;
+            grid-column: span 2; /* Each card normally takes 2 of 6 columns (making 3 per row) */
+        }
+
+        /* Centering the last two cards on the second row */
+        @media (min-width: 992px) {
+            .value-card:nth-child(4) {
+                grid-column: 2 / span 2; /* Starts at column 2 */
+            }
+            .value-card:nth-child(5) {
+                grid-column: 4 / span 2; /* Starts at column 4 */
+            }
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.06);
+            border-color: var(--primary-green);
+        }
+
+        /* Numbered Pill - Clean & Modern */
+        .value-number {
+            position: absolute;
+            top: -25px;
+            left: 40px;
+            background: var(--primary-green);
+            color: #ffffff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border: 5px solid #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 182, 74, 0.15);
+        }
+
+        .value-card-title {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .value-card-text {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 991px) {
+            .values-grid { grid-template-columns: 1fr; }
+            .value-card { grid-column: span 1 !important; margin-bottom: 20px; }
+        }
+    </style>
+
+    <section class="values-section">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <span class="about-badge">Our Pillars</span>
+                <h2 class="about-heading" style="font-size: 3rem;">Our Core Values</h2>
+                <p class="about-lead">The fundamental principles that drive our commitment to healthcare excellence in the Volta Region.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="value-number">01</div>
+                    <h3 class="value-card-title">Compassion</h3>
+                    <p class="value-card-text">We treat every patient with dignity and empathy, ensuring they feel supported throughout their recovery journey.</p>
+                </div>
+
+                <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-number">02</div>
+                    <h3 class="value-card-title">Excellence</h3>
+                    <p class="value-card-text">We strive for the highest standards in all medical services, from diagnosis to treatment and aftercare.</p>
+                </div>
+
+                <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="value-number">03</div>
+                    <h3 class="value-card-title">Integrity</h3>
+                    <p class="value-card-text">We uphold strict honesty, medical ethics, and total transparency in every patient interaction.</p>
+                </div>
+
+                <div class="value-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="value-number">04</div>
+                    <h3 class="value-card-title">Accessibility</h3>
+                    <p class="value-card-text">We ensure healthcare is available 24/7, serving our community whenever medical needs arise.</p>
+                </div>
+
+                <div class="value-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="value-number">05</div>
+                    <h3 class="value-card-title">Community</h3>
+                    <p class="value-card-text">We exist to improve the health of our local community, building a legacy of trust and wellness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .services-framework {
+            padding: 100px 0;
+            background-color: #fafbfc;
+            position: relative;
+        }
+
+        .services-header {
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service-feat-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid #edf2f7;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .service-feat-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 182, 74, 0.05);
+        }
+
+        .service-icon-wrap {
+            width: 55px;
+            height: 55px;
+            background: var(--mint-bg);
+            color: var(--primary-green);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .service-feat-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 0;
+        }
+
+        /* Integrated Care Model Box */
+        .integrated-model-box {
+            margin-top: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), #0056b3);
+            border-radius: 30px;
+            padding: 50px;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .model-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .model-label {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 15px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .model-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .model-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        .model-icon-bg {
+            font-size: 10rem;
+            position: absolute;
+            right: -20px;
+            bottom: -30px;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+        }
+
+        .btn-model {
+            background: #ffffff;
+            color: var(--primary-blue);
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            z-index: 5;
+            transition: 0.3s;
+        }
+
+        .btn-model:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        @media (max-width: 991px) {
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .integrated-model-box { flex-direction: column; text-align: center; gap: 30px; }
+        }
+
+        @media (max-width: 767px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <section class="services-framework">
+        <div class="container">
+            <div class="services-header" data-aos="fade-up">
+                <span class="section-tag">Our Services Framework</span>
+                <h2 class="who-title mb-2">Comprehensive Care Solutions</h2>
+                <p class="text-muted fs-5">Professional medical services tailored to the needs of Anyirawase and the Volta Region.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-feat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon-wrap"><i class="fa-solid fa-stethoscope"></i></div>
+                    <h3 class="service-feat-title">General Outpatient Care</h3>
+                </div>
+
+                <div class="service-feat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon-wrap" style="color: var(--accent-red); background: rgba(232, 39, 42, 0.08);"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h3 class="service-feat-title">24/7 Emergency Services</h3>
+                </div>
+
+                <div class="service-feat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon-wrap"><i class="fa-solid fa-person-pregnant"></i></div>
+                    <h3 class="service-feat-title">Maternity & Antenatal Care</h3>
+                </div>
+
+                <div class="service-feat-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon-wrap"><i class="fa-solid fa-microscope"></i></div>
+                    <h3 class="service-feat-title">Laboratory Diagnostics</h3>
+                </div>
+
+                <div class="service-feat-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon-wrap"><i class="fa-solid fa-pills"></i></div>
+                    <h3 class="service-feat-title">Pharmacy Services</h3>
+                </div>
+
+                <div class="service-feat-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon-wrap"><i class="fa-solid fa-mask-ventilator"></i></div>
+                    <h3 class="service-feat-title">Theatre Services (Major & Minor Surgical)</h3>
+                </div>
+            </div>
+
+            <div class="integrated-model-box" data-aos="zoom-in">
+                <div class="model-content">
+                    <span class="model-label">Patient-Centered Approach</span>
+                    <h2 class="model-title">Integrated Care Model</h2>
+                    <p class="model-text">
+                        Our integrated care model ensures that patients receive diagnosis, treatment, and medication under one roof, saving time and improving health outcomes.
+                    </p>
+                </div>
+                <a href="services.html" class="btn-model">Explore All Services</a>
+                <i class="fa-solid fa-hospital model-icon-bg"></i>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .quality-section {
+            padding: 100px 0;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .quality-container {
+            background: var(--mint-bg);
+            border-radius: 40px;
+            padding: 80px 60px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .quality-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        .quality-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+        }
+
+        .quality-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Patient Groups Styling */
+        .serve-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-green);
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .serve-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .serve-item {
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: 0.3s;
+        }
+
+        .serve-item:hover {
+            border-color: var(--primary-green);
+            transform: translateX(10px);
+        }
+
+        .serve-icon {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+
+        .serve-label {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        /* Decorative Shield Icon */
+        .shield-bg-icon {
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 25rem;
+            color: var(--primary-green);
+            opacity: 0.03;
+            z-index: 1;
+        }
+
+        @media (max-width: 991px) {
+            .quality-container { padding: 50px 30px; }
+            .serve-grid { grid-template-columns: 1fr; }
+            .shield-bg-icon { display: none; }
+        }
+    </style>
+
+    <section class="quality-section">
+        <div class="container">
+            <div class="quality-container" data-aos="fade-up">
+                <i class="fa-solid fa-shield-halved shield-bg-icon"></i>
+                
+                <div class="row align-items-center quality-content">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <span class="section-tag">Quality & Safety</span>
+                        <h2 class="quality-title">Your Health & Safety is Our Top Priority</h2>
+                        <p class="quality-text">
+                            At Safe Care Hospital, we adhere to professional healthcare standards, maintain strict hygiene and infection prevention protocols, and ensure that our staff receive ongoing training. 
+                            <br><br>
+                            Our goal is to deliver care that is not only effective but also reassuring and patient-focused.
+                        </p>
+                        
+                        <div class="d-flex gap-3 align-items-center">
+                            <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-green); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Certified Standards</h6>
+                                <p class="mb-0 small text-muted">Strict Clinical Compliance</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 offset-lg-1">
+                        <span class="serve-title">We Proudly Serve</span>
+                        <div class="serve-grid">
+                            <div class="serve-item">
+                                <i class="fa-solid fa-id-card serve-icon"></i>
+                                <p class="serve-label">NHIS Patients</p>
+                            </div>
+                            <div class="serve-item">
+                                <i class="fa-solid fa-umbrella serve-icon"></i>
+                                <p class="serve-label">Private Insurance</p>
+                            </div>
+                            <div class="serve-item">
+                                <i class="fa-solid fa-building serve-icon"></i>
+                                <p class="serve-label">Corporate Clients</p>
+                            </div>
+                            <div class="serve-item">
+                                <i class="fa-solid fa-person-walking serve-icon"></i>
+                                <p class="serve-label">Walk-in Patients</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .impact-section {
+            padding: 120px 0;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .impact-list {
+            list-style: none;
+            padding: 0;
+            margin: 40px 0;
+        }
+
+        .impact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .impact-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 5px rgba(0, 182, 74, 0.1);
+        }
+
+        /* Staggered Image Collage inspired by Reference 4 */
+        .impact-collage {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+
+        .impact-img {
+            width: 100%;
+            border-radius: 30px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        /* Reference 4 Staggered Logic */
+        .img-top-left { height: 250px; }
+        .img-bottom-left { height: 350px; margin-top: -20px; }
+        .img-right { height: 580px; grid-row: span 2; }
+
+        /* Central Floating Badge */
+        .impact-badge-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            border: 8px solid #ffffff;
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
+        }
+
+        @media (max-width: 991px) {
+            .impact-collage { margin-top: 60px; }
+            .img-right { height: 400px; }
+        }
+    </style>
+
+    <section class="impact-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <span class="section-tag">Community Impact</span>
+                    <h2 class="who-title">Building a Stronger, Healthier Community</h2>
+                    <p class="who-text">
+                        As the only hospital in the district, Safe Care Hospital plays an essential role in the lives of our neighbors. We believe strong communities are built on strong healthcare systems.
+                    </p>
+
+                    <ul class="impact-list">
+                        <li class="impact-item"><span class="impact-dot"></span> Reducing emergency response time</li>
+                        <li class="impact-item"><span class="impact-dot"></span> Supporting maternal and child health</li>
+                        <li class="impact-item"><span class="impact-dot"></span> Providing accessible healthcare within the community</li>
+                        <li class="impact-item"><span class="impact-dot"></span> Supporting local businesses and families</li>
+                    </ul>
+
+                    <div class="d-flex align-items-center gap-4 mt-5">
+                        <a href="contact.html" class="btn-glow-main" style="background: var(--primary-blue); color: #fff;">Visit Us Today</a>
+                        <div class="small text-muted fw-bold">Open 24/7 For All <br>Emergencies</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="impact-collage">
+                        <div class="impact-badge-circle">
+                            DISTRICT<br>TRUSTED
+                        </div>
+
+                        <div class="d-flex flex-column gap-4">
+                            <img src="Assets/images/Facility 4.png" class="impact-img img-top-left" alt="Community Health">
+                            <img src="Assets/images/Facility 3.png" class="impact-img img-bottom-left" alt="Emergency Support">
+                        </div>
+                        
+                        <div>
+                            <img src="Assets/images/Facility 1.png" class="impact-img img-right" alt="Hospital Interior">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .leadership-modern {
+            padding: 120px 0;
+            background-color: #ffffff;
+        }
+
+        .leadership-card {
+            background: #ffffff;
+            border-radius: 40px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.05);
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative Mint Background Circle */
+        .leadership-card::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            background: var(--mint-bg);
+            border-radius: 50%;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .leadership-row {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        /* Circular Portrait Style */
+        .ceo-portrait-wrap {
+            flex: 0 0 320px;
+            text-align: center;
+        }
+
+        .ceo-circle-frame {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 10px solid #ffffff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 25px;
+            outline: 2px solid var(--primary-green);
+        }
+
+        .ceo-portrait-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ceo-info-modern .name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .ceo-info-modern .badge {
+            background: var(--primary-green);
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        /* Message Styling */
+        .ceo-message-content {
+            flex: 1;
+        }
+
+        .quote-accent {
+            color: var(--primary-blue);
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .modern-heading {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .modern-body-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .priority-btn {
+            background: var(--primary-blue);
+            color: #ffffff;
+            padding: 14px 30px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .priority-btn:hover {
+            background: var(--primary-green);
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 991px) {
+            .leadership-card { padding: 40px 25px; }
+            .leadership-row { flex-direction: column; text-align: center; gap: 40px; }
+            .ceo-portrait-wrap { flex: 0 0 auto; }
+            .modern-heading { font-size: 1.8rem; }
+        }
+    </style>
+
+    <section class="leadership-modern">
+        <div class="container">
+            <div class="leadership-card" data-aos="zoom-in">
+                <div class="leadership-row">
+                    
+                    <div class="ceo-portrait-wrap">
+                        <div class="ceo-circle-frame">
+                            <img src="Assets/images/Founder.jpeg" alt="CEO Safe Care" class="ceo-portrait-img">
+                        </div>
+                        <div class="ceo-info-modern">
+                            <div class="name">Mrs. Josephine Awoye Asamoah</div>
+                            <span class="badge">Chief Executive Officer</span>
+                        </div>
+                    </div>
+
+                    <div class="ceo-message-content">
+                        <span class="section-tag" style="margin-bottom: 5px;">Leadership Vision</span>
+                        <i class="fa-solid fa-quote-left quote-accent"></i>
+                        <h2 class="modern-heading">Your Health, Our Priority</h2>
+                        
+                        <p class="modern-body-text">
+                            "At Safe Care Hospital, our promise is simple—Your Health, Our Priority. Since our establishment, 
+                            we have remained committed to providing dependable and accessible healthcare to our community. 
+                            We understand the trust our patients place in us, and we work every day to uphold that trust through 
+                            professionalism, innovation, and compassionate service."
+                        </p>
+
+                        <a href="contact.html" class="priority-btn">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            Safe Care: Your Health, Our Priority
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="values">
+        <div class="container">
+            </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <img src="Assets/images/safe care.png" alt="Safe Care Hospital Logo" class="footer-logo">
+                    <p style="color: #a1a1a1; line-height: 1.8; font-size: 0.95rem;">
+                        Safe Care Hospital is a primary hospital located in Anyirawase, Volta Region, committed to delivering quality and compassionate healthcare services 24 hours a day.
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 ps-lg-5">
+                    <h5 class="footer-col-title">Quick Links</h5>
+                    <nav>
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="services.html" class="footer-link">Services</a>
+                        <a href="news.html" class="footer-link">News</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </nav>
+                </div>
+
+                <div class="col-lg-5 col-md-6">
+                    <h5 class="footer-col-title">Contact Info</h5>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-location-dot footer-contact-icon"></i>
+                        <span>Anyirawase, Volta Region – Ghana</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-phone footer-contact-icon"></i>
+                        <span>+233 533 990 935</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-envelope footer-contact-icon"></i>
+                        <div>
+                            <span>info@safecarehospital.com</span><br>
+                            <span>safecarehospital2023@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom text-center">
+                <p class="mb-0" style="color: #666; font-size: 0.9rem;">
+                    &copy; 2026 Safe Care Hospital. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+    <script src="Assets/js/site.js"></script>
+</body>
+</html>
