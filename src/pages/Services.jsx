@@ -1,345 +1,257 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import './Services.css';
 
+const services = [
+  {
+    id: 1,
+    title: 'General Outpatient Services',
+    description:
+      'Comprehensive consultation, diagnosis, and treatment for everyday health concerns. Our outpatient department provides reliable primary care for the entire family.',
+    subs: 'Consultations / Diagnostics / Treatments / Health Screenings / Chronic Care / Wound Management',
+    image: '/Assets/images/general-house.png',
+  },
+  {
+    id: 2,
+    title: 'Maternity & Antenatal Care',
+    description:
+      'Safe pregnancy monitoring, maternal care, and professional delivery support in a compassionate environment.',
+    subs: 'Antenatal Care / Delivery Services / Postnatal Support / Newborn Care / Maternal Counseling',
+    image: '/Assets/images/pregnancy.png',
+  },
+  {
+    id: 3,
+    title: 'Laboratory Services',
+    description:
+      'Accurate and timely diagnostic testing to guide effective treatment. Modern equipment for reliable results.',
+    subs: 'Blood Tests / Urinalysis / Pathology / Health Panels / Rapid Diagnostics',
+    image: '/Assets/images/ls.jpg',
+  },
+  {
+    id: 4,
+    title: 'Pharmacy',
+    description:
+      'Fully stocked pharmacy providing prescribed and over-the-counter medications with expert counseling.',
+    subs: 'Prescription Meds / OTC Products / Health Advice / Medication Management / Wellness',
+    image: '/Assets/images/PHARMACY-1.jpg',
+  },
+  {
+    id: 5,
+    title: 'Theatre Services',
+    description:
+      'Major and minor surgical procedures performed in a safe, sterile environment by experienced professionals.',
+    subs: 'Minor Surgery / Major Operations / Emergency Surgery / Post-Op Care / Sterile Protocols',
+    image: '/Assets/images/theatre.jpg',
+  },
+];
+
+const treatments = [
+  { title: 'General medical consultation', image: '/Assets/images/Facility 1.png' },
+  { title: 'Maternity & antenatal care', image: '/Assets/images/Facility 2.png' },
+  { title: 'Primary healthcare services', image: '/Assets/images/Facility 3.png' },
+  { title: 'Emergency & trauma care', image: '/Assets/images/Facility 4.png' },
+  { title: 'Diagnostic & lab services', image: '/Assets/images/Facility 6.png' },
+];
+
+const faqs = [
+  {
+    q: 'How do you ensure patient safety and privacy?',
+    a: 'We ensure patient safety and privacy through strict hygiene standards, trained medical staff, secure digital records, confidentiality policies, and full compliance with healthcare regulations at every stage of care.',
+  },
+  {
+    q: 'What services does your outpatient department offer?',
+    a: 'Our outpatient department offers general consultations, management of chronic conditions like hypertension and diabetes, treatment of infections and common illnesses, wound care, and medical assessments.',
+  },
+  {
+    q: 'Do you accept NHIS and private insurance?',
+    a: 'Yes, we accept NHIS patients, private insurance plans, corporate clients, and walk-in patients. We strive to make quality healthcare accessible to everyone.',
+  },
+  {
+    q: 'What are your operating hours?',
+    a: 'We operate 24 hours a day, 7 days a week. Our emergency services are available around the clock to handle any medical situation.',
+  },
+  {
+    q: 'How can I book an appointment?',
+    a: 'You can book an appointment by calling us at +233 533 990 935, visiting our facility at Anyirawase, Volta Region, or using the contact form on our website.',
+  },
+];
+
 export default function Services() {
+  const [openFaq, setOpenFaq] = useState(null);
+
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 800, once: true });
   }, []);
 
   return (
     <div className="services-page">
-      {/* Services Hero */}
+      {/* Hero */}
       <section className="services-hero">
+        <div className="services-hero-bg"></div>
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-lg-6" data-aos="fade-right">
-              <span className="hero-label">🏥 OUR SERVICES</span>
-              <p className="text-uppercase fw-bold small text-muted mb-2" style={{ letterSpacing: '1.5px' }}>
-                Safe Care Hospital – Anyirawase
-              </p>
-              <h1 className="hero-title">
-                Comprehensive <br />
-                <span style={{ color: 'var(--primary-green)' }}>Primary Healthcare</span>
+            <div className="col-lg-7" data-aos="fade-up">
+              <span className="services-hero-badge">Our Services</span>
+              <h1 className="services-hero-title">
+                Expert medical care <br />
+                <span className="text-green">for lifelong health</span>
               </h1>
-              <p className="lead text-muted mb-4">
-                Reliable, accessible, and patient-centered medical care for families and organizations — <strong>24 Hours a Day.</strong>
+              <p className="services-hero-desc">
+                At our healthcare center, we are committed to delivering advanced medical care that
+                places your health, comfort, and well-being at the heart of everything we do.
               </p>
+              <div className="services-hero-actions">
+                <Link to="/contact" className="btn-hero-primary">
+                  Consult a doctor
+                </Link>
+                <Link to="/about" className="btn-hero-secondary">
+                  Explore more
+                </Link>
+              </div>
             </div>
-            <div className="col-lg-6 mt-5 mt-lg-0 text-center" data-aos="fade-left">
-              <img
-                src="/Assets/images/Nurse.png"
-                className="img-fluid"
-                alt="Safe Care Medical Services"
-                style={{
-                  transform: 'scaleX(-1)',
-                  maxHeight: '500px',
-                  filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.1))',
-                }}
-              />
+            <div className="col-lg-5 d-none d-lg-flex justify-content-end" data-aos="fade-up" data-aos-delay="150">
+              <div className="hero-testimonial">
+                <div className="hero-testimonial-avatars">
+                  <img src="/Assets/images/Doctor 1.png" alt="" />
+                  <img src="/Assets/images/Doctor 2.png" alt="" />
+                  <img src="/Assets/images/Doctor 5.png" alt="" />
+                </div>
+                <div className="hero-testimonial-stars">
+                  <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+                    <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.18l-4.77 2.54.91-5.33L2.27 6.62l5.34-.78L10 1z" fill="#f59e0b"/>
+                  </svg>
+                  <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+                    <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.18l-4.77 2.54.91-5.33L2.27 6.62l5.34-.78L10 1z" fill="#f59e0b"/>
+                  </svg>
+                  <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+                    <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.18l-4.77 2.54.91-5.33L2.27 6.62l5.34-.78L10 1z" fill="#f59e0b"/>
+                  </svg>
+                  <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+                    <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.18l-4.77 2.54.91-5.33L2.27 6.62l5.34-.78L10 1z" fill="#f59e0b"/>
+                  </svg>
+                </div>
+                <span className="hero-testimonial-text">100k+ Satisfied patients</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="intro-section">
+      {/* Services List */}
+      <section className="services-list-section">
         <div className="container">
-          <div className="row justify-content-center text-center mb-5">
-            <div className="col-lg-9">
-              <h2 className="fw-bold mb-4">Excellence in Community Health</h2>
-              <p className="text-muted fs-5">
-                At Safe Care Hospital, we deliver high-quality primary healthcare supported by modern diagnostics and professional clinical expertise. As the only hospital within the district, we serve as a critical healthcare provider for our community and surrounding districts.
-              </p>
+          <div className="services-list-header" data-aos="fade-up">
+            <div>
+              <span className="services-list-badge">What We Offer</span>
+              <h2 className="services-list-heading">Comprehensive medical services for you</h2>
             </div>
+            <Link to="/contact" className="services-list-cta d-none d-lg-flex">
+              View more
+              <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
+                <path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
           </div>
 
-          <div className="row g-4 mt-4">
-            <div className="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
-              <div className="client-card">
-                <i className="fa-solid fa-id-card client-icon"></i>
-                <h6 className="fw-bold m-0">NHIS Patients</h6>
-              </div>
-            </div>
-            <div className="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
-              <div className="client-card">
-                <i className="fa-solid fa-shield-heart client-icon"></i>
-                <h6 className="fw-bold m-0">Private Insurance</h6>
-              </div>
-            </div>
-            <div className="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
-              <div className="client-card">
-                <i className="fa-solid fa-building client-icon"></i>
-                <h6 className="fw-bold m-0">Corporate Clients</h6>
-              </div>
-            </div>
-            <div className="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
-              <div className="client-card">
-                <i className="fa-solid fa-person-walking client-icon"></i>
-                <h6 className="fw-bold m-0">Walk-in Patients</h6>
-              </div>
-            </div>
+          <div className="services-rows">
+            {services.map((service, index) => (
+              <Link
+                to="/contact"
+                className={`service-row ${index % 2 === 0 ? 'image-left' : 'image-right'}`}
+                key={service.id}
+                data-aos="fade-up"
+                data-aos-delay={index * 80}
+              >
+                <div className="service-row-divider"></div>
+                <div className="service-row-inner">
+                  <div className="service-row-image">
+                    <div className="image-wrapper">
+                      <img src={service.image} alt={service.title} loading="lazy" />
+                    </div>
+                  </div>
+                  <div className="service-row-content">
+                    <div className="service-row-icon">
+                      <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
+                        <path d="M12 8v4M12 16h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    </div>
+                    <h3 className="service-row-title">{service.title}</h3>
+                    <p className="service-row-desc">{service.description}</p>
+                    <div className="service-row-subs">{service.subs}</div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+            <div className="service-row-divider last"></div>
           </div>
         </div>
       </section>
 
-      {/* Services Detail Grid */}
-      <section className="services-detail-grid pb-5">
+      {/* Treatment Grid */}
+      <section className="treatment-section">
         <div className="container">
-          <div className="row mb-5 text-center" data-aos="fade-up">
-            <div className="col-12">
-              <span className="hero-label">CLINICAL DEPARTMENTS</span>
-              <h2 className="fw-bold">Our Comprehensive Medical Care</h2>
-              <p className="text-muted">High-quality healthcare services designed for the Anyirawase community.</p>
-            </div>
+          <div className="text-center mb-5" data-aos="fade-up">
+            <span className="services-list-badge">Our Expertise</span>
+            <h2 className="treatment-heading">
+              Where expert medical care meets <span className="text-green">compassionate treatments</span>
+            </h2>
           </div>
-
-          <div className="row g-4">
-            <div className="col-lg-6" data-aos="fade-up">
-              <div className="service-detail-card h-100">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="service-number-box">01</div>
-                  <h3 className="fw-bold m-0 ms-3">General Outpatient Department (OPD)</h3>
+          <div className="treatment-grid">
+            {treatments.map((item, i) => (
+              <div className="treatment-card" key={i} data-aos="fade-up" data-aos-delay={i * 60}>
+                <div className="treatment-image-wrapper">
+                  <img src={item.image} alt={item.title} loading="lazy" />
                 </div>
-                <p className="text-muted fw-semibold mb-3">Diagnosis & Treatment for Everyday Health Needs</p>
-                <p className="small text-muted mb-4">
-                  Our Outpatient Department provides medical consultation and treatment for a wide range of conditions.
-                </p>
-                <ul className="service-bullet-list">
-                  <li><i className="fa-solid fa-circle-check"></i> Medical consultations</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Management of hypertension and diabetes</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Treatment of infections and common illnesses</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Major & Minor procedures and wound care</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Medical assessments and reports</li>
-                </ul>
+                <div className="treatment-label">{item.title}</div>
               </div>
-            </div>
-
-            <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <div className="service-detail-card h-100">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="service-number-box">02</div>
-                  <h3 className="fw-bold m-0 ms-3">Maternity & Antenatal Care</h3>
-                </div>
-                <p className="text-muted fw-semibold mb-3">Safe & Professional Maternal Healthcare</p>
-                <p className="small text-muted mb-4">
-                  We provide comprehensive maternal services ensuring safety for both mother and baby with compassionate support.
-                </p>
-                <ul className="service-bullet-list">
-                  <li><i className="fa-solid fa-circle-check"></i> Antenatal monitoring & Routine pregnancy testing</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Supervised deliveries & Postnatal care</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Maternal counseling</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="col-lg-6" data-aos="fade-up">
-              <div className="service-detail-card h-100">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="service-number-box">03</div>
-                  <h3 className="fw-bold m-0 ms-3">24/7 Emergency Services</h3>
-                </div>
-                <p className="text-muted fw-semibold mb-3">Immediate Medical Attention When It Matters Most</p>
-                <p className="small text-muted mb-4">
-                  Our emergency services operate round-the-clock to handle trauma, acute crises, and sudden illnesses.
-                </p>
-                <ul className="service-bullet-list">
-                  <li><i className="fa-solid fa-circle-check"></i> Trauma, injuries, and obstetric emergencies</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Severe infections & Acute medical crises</li>
-                  <li><i className="fa-solid fa-phone-volume text-success"></i> <strong>Hotline:</strong> +233 533 990 935</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <div className="service-detail-card h-100">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="service-number-box">04</div>
-                  <h3 className="fw-bold m-0 ms-3">Laboratory Services</h3>
-                </div>
-                <p className="text-muted fw-semibold mb-3">Accurate, Reliable & Timely Diagnostics</p>
-                <p className="small text-muted mb-4">
-                  Fast turnaround times help ensure immediate treatment planning using modern diagnostic equipment.
-                </p>
-                <ul className="service-bullet-list">
-                  <li><i className="fa-solid fa-circle-check"></i> Blood investigations & Malaria testing</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Urinalysis & Routine medical screenings</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Comprehensive Diagnostic panels</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="col-lg-6" data-aos="fade-up">
-              <div className="service-detail-card h-100">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="service-number-box">05</div>
-                  <h3 className="fw-bold m-0 ms-3">Ultrasound & Diagnostic Imaging</h3>
-                </div>
-                <p className="text-muted fw-semibold mb-3">Clear Imaging for Accurate Diagnosis</p>
-                <p className="small text-muted mb-4">
-                  Real-time imaging to support medical diagnosis and pregnancy monitoring with clinical accuracy.
-                </p>
-                <ul className="service-bullet-list">
-                  <li><i className="fa-solid fa-circle-check"></i> Obstetric (pregnancy) scans</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Abdominal & Pelvic scans</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Physician-recommended diagnostic imaging</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <div className="service-detail-card h-100">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="service-number-box">06</div>
-                  <h3 className="fw-bold m-0 ms-3">Pharmacy Services</h3>
-                </div>
-                <p className="text-muted fw-semibold mb-3">Convenient & Safe Medication Access</p>
-                <p className="small text-muted mb-4">
-                  Our in-house pharmacy ensures patients receive prescribed medications immediately after consultation.
-                </p>
-                <ul className="service-bullet-list">
-                  <li><i className="fa-solid fa-circle-check"></i> Prescription & OTC dispensing</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Professional Medication counseling</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Safe pharmaceutical guidance</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="col-lg-6" data-aos="fade-up">
-              <div className="service-detail-card h-100">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="service-number-box">07</div>
-                  <h3 className="fw-bold m-0 ms-3">Theatre Services</h3>
-                </div>
-                <p className="text-muted fw-semibold mb-3">Safe Minor Surgical Procedures</p>
-                <p className="small text-muted mb-4">
-                  Qualified professionals performing interventions in a sterile, strictly controlled environment.
-                </p>
-                <ul className="service-bullet-list">
-                  <li><i className="fa-solid fa-circle-check"></i> Major - Minor operations & Wound management</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Incision and drainage</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Strict infection control protocols</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <div className="service-detail-card h-100">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="service-number-box">08</div>
-                  <h3 className="fw-bold m-0 ms-3">Corporate Medical Services</h3>
-                </div>
-                <p className="text-muted fw-semibold mb-3">Professional Solutions for Organizations</p>
-                <p className="small text-muted mb-4">
-                  Tailored healthcare solutions for workforce management and organizational productivity.
-                </p>
-                <ul className="service-bullet-list">
-                  <li><i className="fa-solid fa-circle-check"></i> Pre-employment & Annual staff screenings</li>
-                  <li><i className="fa-solid fa-circle-check"></i> Workplace health assessments & Fitness reports</li>
-                  <li><i className="fa-solid fa-circle-check"></i> On-call emergency support arrangements</li>
-                </ul>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Care Process Section */}
-      <section className="care-process-section py-5" style={{ backgroundColor: 'var(--soft-mint)' }}>
-        <div className="container py-5">
-          <div className="row align-items-center">
-            <div className="col-lg-5" data-aos="fade-right">
-              <span className="hero-label">OUR CARE PROCESS</span>
-              <h2 className="fw-bold mb-4">A Structured Approach to Your Recovery</h2>
-              <p className="text-muted mb-4">
-                This professional standard ensures continuity and high-quality care from the moment you step into our facility until you are fully recovered.
-              </p>
-
-              <div className="d-flex gap-4 mt-5">
-                <div className="stat-item">
-                  <h4 className="fw-bold m-0 text-success">24/7</h4>
-                  <small className="text-uppercase fw-bold text-muted" style={{ fontSize: '0.7rem' }}>
-                    Availability
-                  </small>
-                </div>
-                <div className="stat-item">
-                  <h4 className="fw-bold m-0 text-success">10+</h4>
-                  <small className="text-uppercase fw-bold text-muted" style={{ fontSize: '0.7rem' }}>
-                    Specialties
-                  </small>
-                </div>
-                <div className="stat-item">
-                  <h4 className="fw-bold m-0 text-success">100%</h4>
-                  <small className="text-uppercase fw-bold text-muted" style={{ fontSize: '0.7rem' }}>
-                    Local Support
-                  </small>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-7">
-              <div className="process-grid">
-                <div className="process-step-card" data-aos="fade-up" data-aos-delay="100">
-                  <div className="step-num">01</div>
-                  <h5>Consultation</h5>
-                  <p className="small m-0 text-muted">
-                    Initial meeting with our medical experts to discuss symptoms and health history.
-                  </p>
-                </div>
-                <div className="process-step-card mt-lg-5" data-aos="fade-up" data-aos-delay="200">
-                  <div className="step-num">02</div>
-                  <h5>Diagnostic Evaluation</h5>
-                  <p className="small m-0 text-muted">
-                    Precise testing through our lab or imaging to identify the root cause.
-                  </p>
-                </div>
-                <div className="process-step-card" data-aos="fade-up" data-aos-delay="300">
-                  <div className="step-num">03</div>
-                  <h5>Treatment Plan</h5>
-                  <p className="small m-0 text-muted">
-                    Developing a personalized medical strategy tailored to your specific needs.
-                  </p>
-                </div>
-                <div className="process-step-card mt-lg-5" data-aos="fade-up" data-aos-delay="400">
-                  <div className="step-num">04</div>
-                  <h5>Medication or Procedure</h5>
-                  <p className="small m-0 text-muted">
-                    Expert administration of treatment, surgery, or prescribed pharmaceuticals.
-                  </p>
-                </div>
-                <div className="process-step-card mx-auto" style={{ gridColumn: 'span 2' }} data-aos="fade-up" data-aos-delay="500">
-                  <div className="step-num">05</div>
-                  <h5>Follow-up & Monitoring</h5>
-                  <p className="small m-0 text-muted">
-                    Ongoing support and review to ensure your health remains on the right track.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="final-cta py-5">
+      {/* FAQ */}
+      <section className="faq-section">
         <div className="container">
-          <div className="cta-box text-center text-white" data-aos="zoom-in">
-            <h2 className="fw-bold mb-3">Your Health Deserves Professional Care</h2>
-            <p className="mb-5 opacity-75">
-              Safe Care Hospital operates 24 hours daily to provide dependable medical services.
+          <div className="text-center mb-5" data-aos="fade-up">
+            <span className="services-list-badge">FAQs</span>
+            <h2 className="treatment-heading">Frequently asked questions</h2>
+          </div>
+          <div className="faq-list" data-aos="fade-up">
+            {faqs.map((faq, i) => (
+              <div className={`faq-item ${openFaq === i ? 'faq-open' : ''}`} key={i}>
+                <button className="faq-question" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                  <span>{faq.q}</span>
+                  <svg viewBox="0 0 24 24" fill="none" width="20" height="20" className="faq-plus">
+                    <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </button>
+                <div className="faq-answer">
+                  <p>{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="services-cta-section">
+        <div className="container">
+          <div className="services-cta-inner" data-aos="fade-up">
+            <span className="services-hero-badge">Get In Touch</span>
+            <h2 className="services-cta-title">Ready to book an appointment?</h2>
+            <p className="services-cta-desc">
+              Our team is available 24/7 to provide the care you need. Call us or visit our facility.
             </p>
-
-            <div className="d-flex flex-wrap justify-content-center gap-3">
-              <Link to="/contact" className="btn btn-light px-4 py-3 fw-bold rounded-pill text-dark">
+            <div className="services-cta-actions">
+              <Link to="/contact" className="btn-cta-primary">
                 Book Appointment
               </Link>
-              <a href="tel:+233533990935" className="btn btn-danger px-4 py-3 fw-bold rounded-pill">
-                Call Emergency Now
+              <a href="tel:+233533990935" className="btn-cta-secondary">
+                Call +233 533 990 935
               </a>
-              <Link to="/contact" className="btn btn-success px-4 py-3 fw-bold rounded-pill">
-                Visit Our Facility Today
-              </Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
+import ServicesCarousel from '../components/ServicesCarousel';
 import './Home.css';
 
 const words = [
@@ -18,6 +19,20 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [animationClass, setAnimationClass] = useState('visible');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const images = [
+    '/Assets/images/image-1.png',
+    '/Assets/images/image-2.png',
+    '/Assets/images/image-3.png'
+  ];
+
+  useEffect(() => {
+    const imgInterval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 4500);
+    return () => clearInterval(imgInterval);
+  }, []);
 
   useEffect(() => {
     // Initialize Scroll Animations
@@ -82,11 +97,16 @@ export default function Home() {
           <div className="row align-items-center g-5">
             <div className="col-lg-6" data-aos="fade-right">
               <div className="value-img-wrapper">
-                <img
-                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000"
-                  className="value-img-main"
-                  alt="Quality Healthcare"
-                />
+                <div className="value-img-slideshow">
+                  {images.map((imgSrc, idx) => (
+                    <img
+                      key={imgSrc}
+                      src={imgSrc}
+                      className={`value-img-main ${idx === currentImageIndex ? 'active' : ''}`}
+                      alt={`Quality Healthcare ${idx + 1}`}
+                    />
+                  ))}
+                </div>
                 <div className="floating-feature-box">
                   <div className="feature-item">
                     <i className="fa-solid fa-check-circle"></i> 24/7 Availability
@@ -116,10 +136,22 @@ export default function Home() {
 
               <h6 className="fw-bold mb-3">We proudly accept:</h6>
               <div className="insurance-grid">
-                <div className="insurance-tag">NHIS Patients</div>
-                <div className="insurance-tag">Private Insurance</div>
-                <div className="insurance-tag">Corporate Clients</div>
-                <div className="insurance-tag">Walk-in Patients</div>
+                <div className="insurance-tag">
+                  <span className="tag-icon"><i className="fa-solid fa-id-card"></i></span>
+                  NHIS Patients
+                </div>
+                <div className="insurance-tag">
+                  <span className="tag-icon"><i className="fa-solid fa-shield-halved"></i></span>
+                  Private Insurance
+                </div>
+                <div className="insurance-tag">
+                  <span className="tag-icon"><i className="fa-solid fa-building"></i></span>
+                  Corporate Clients
+                </div>
+                <div className="insurance-tag">
+                  <span className="tag-icon"><i className="fa-solid fa-user"></i></span>
+                  Walk-in Patients
+                </div>
               </div>
             </div>
           </div>
@@ -128,103 +160,34 @@ export default function Home() {
 
       {/* Stats Section */}
       <section className="stats-section">
-        <div className="container">
+        <div className="stats-inner">
           <div className="row g-4 justify-content-center">
             <div className="col-6 col-md-4" data-aos="fade-up">
               <div className="stat-item">
+                <span className="stat-icon"><i className="fa-regular fa-clock"></i></span>
                 <span className="stat-number">24/7</span>
-                <span className="stat-label">Availability</span>
+                <span className="stat-label">Emergency Availability</span>
               </div>
             </div>
             <div className="col-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
               <div className="stat-item">
+                <span className="stat-icon"><i className="fa-solid fa-stethoscope"></i></span>
                 <span className="stat-number">10+</span>
-                <span className="stat-label">Specialties</span>
+                <span className="stat-label">Medical Specialties</span>
               </div>
             </div>
             <div className="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
               <div className="stat-item">
+                <span className="stat-icon"><i className="fa-regular fa-heart"></i></span>
                 <span className="stat-number">100%</span>
-                <span className="stat-label">Local Support</span>
+                <span className="stat-label">Community-Focused Care</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="services-section">
-        <div className="container">
-          <div className="text-center mb-5" data-aos="fade-up">
-            <span className="value-badge">Specialized Care</span>
-            <h2 className="value-headline">Our Core Medical Services</h2>
-          </div>
-
-          <div className="row g-4 justify-content-center">
-            <div className="col-lg-4 col-md-6" data-aos="fade-up">
-              <div className="service-card">
-                <div className="service-icon">
-                  <i className="fa-solid fa-stethoscope"></i>
-                </div>
-                <h4>General Outpatient Services</h4>
-                <p>
-                  Comprehensive consultation, diagnosis, and treatment for everyday health concerns.
-                </p>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div className="service-card">
-                <div className="service-icon">
-                  <i className="fa-solid fa-person-pregnant"></i>
-                </div>
-                <h4>Maternity & Antenatal Care</h4>
-                <p>
-                  Safe pregnancy monitoring, maternal care, and professional delivery support.
-                </p>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-              <div className="service-card">
-                <div className="service-icon">
-                  <i className="fa-solid fa-microscope"></i>
-                </div>
-                <h4>Laboratory Services</h4>
-                <p>
-                  Accurate and timely diagnostic testing to guide effective treatment.
-                </p>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-              <div className="service-card">
-                <div className="service-icon">
-                  <i className="fa-solid fa-pills"></i>
-                </div>
-                <h4>Pharmacy</h4>
-                <p>
-                  Fully stocked pharmacy providing prescribed and over-the-counter medications.
-                </p>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-              <div className="service-card">
-                <div className="service-icon">
-                  <i className="fa-solid fa-hospital"></i>
-                </div>
-                <h4>Theatre Services</h4>
-                <p>
-                  Major and minor surgical procedures performed in a safe and sterile environment.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-5" data-aos="fade-up">
-            <Link to="/services" className="btn-primary-green">
-              View All Services
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ServicesCarousel />
 
       {/* Why Choose Us */}
       <section className="why-choose-section">

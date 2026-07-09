@@ -454,26 +454,39 @@
             font-weight: 600;
         }
 
-        /* --- STICKY EMERGENCY TICKER --- */
-        .emergency-ticker {
-            background: var(--accent-red);
-            color: white;
-            padding: 15px 0;
-            font-weight: 700;
-            text-align: center;
-            width: 100%;
+        /* --- FLOATING EMERGENCY PILL --- */
+        .emergency-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #dc2626;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
             position: fixed;
-            bottom: 0;
-            left: 0;
-            z-index: 2000;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            backdrop-filter: blur(8px);
+            letter-spacing: 0.02em;
+        }
+
+        .emergency-pill:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 8px 28px rgba(220, 38, 38, 0.4);
         }
 
         /* --- NEW FOOTER STYLES --- */
         .footer-section {
             background-color: #111111;
             color: #ffffff;
-            padding: 80px 0 100px; /* Extra padding bottom for ticker */
+            padding: 80px 0 60px;
         }
         
         .footer-logo {
