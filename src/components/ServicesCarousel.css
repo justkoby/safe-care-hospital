@@ -38,31 +38,44 @@
   margin: 0;
 }
 
-/* ── Embla Viewport ── */
+/* ── Scroll Track (native scroll-snap) ── */
 
-.embla-viewport {
-  overflow: hidden;
+.services-scroll-track {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   cursor: grab;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  scrollbar-width: none;
 }
 
-.embla-viewport:active {
+.services-scroll-track::-webkit-scrollbar {
+  display: none;
+}
+
+.services-scroll-track:active {
   cursor: grabbing;
 }
 
-.embla-container {
-  display: flex;
-  gap: 28px;
-  margin-bottom: 40px;
+.services-scroll-track.is-dragging {
+  scroll-behavior: auto;
 }
 
-.embla-slide {
+/* ── Scroll Card ── */
+
+.services-scroll-card {
   flex: 0 0 75vw;
   max-width: 960px;
   min-width: 0;
+  scroll-snap-align: start;
 }
 
 @media (min-width: 1200px) {
-  .embla-slide {
+  .services-scroll-card {
     flex: 0 0 70vw;
   }
 }
@@ -81,6 +94,8 @@
   transition: box-shadow 0.4s ease;
   height: 100%;
   will-change: transform;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .service-card-horizontal:hover {
@@ -109,21 +124,125 @@
   object-fit: cover;
   display: block;
   will-change: transform;
+  pointer-events: none;
+}
+
+/* ── Content Side ── */
+
+.service-card-content {
+  flex: 0 0 50%;
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
-  .embla-slide {
+  .service-card-content {
+    padding: 32px 28px;
+  }
+}
+
+.service-card-category {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #55c26a;
+  margin-bottom: 10px;
+}
+
+.service-card-title {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
+}
+
+.service-card-description {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #6b7280;
+  margin: 0 0 24px;
+}
+
+/* ── Bullets ── */
+
+.service-card-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service-card-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #374151;
+  pointer-events: none;
+}
+
+.bullet-check {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ecfdf5;
+  color: #55c26a;
+  margin-top: 1px;
+}
+
+/* ── Learn More Link ── */
+
+.learn-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #55c26a;
+  text-decoration: none;
+  transition: gap 0.3s ease;
+  width: fit-content;
+}
+
+.learn-more-link:hover {
+  gap: 14px;
+}
+
+.learn-more-arrow {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.learn-more-link:hover .learn-more-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .services-scroll-card {
     flex: 0 0 86vw;
     max-width: 360px;
   }
 
-  .embla-viewport {
-    margin-bottom: 16px;
-  }
-
-  .embla-container {
+  .services-scroll-track {
     gap: 16px;
     margin-bottom: 0;
+    padding-bottom: 16px;
   }
 
   .service-card-horizontal,
@@ -208,145 +327,4 @@
   .services-carousel-heading {
     font-size: 1.6rem;
   }
-
-  .embla-controls {
-    display: none;
-  }
-}
-
-/* ── Content Side ── */
-
-.service-card-content {
-  flex: 0 0 50%;
-  padding: 48px 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-@media (max-width: 768px) {
-  .service-card-content {
-    padding: 32px 28px;
-  }
-}
-
-.service-card-category {
-  display: inline-block;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #55c26a;
-  margin-bottom: 10px;
-}
-
-.service-card-title {
-  font-size: clamp(1.35rem, 2vw, 1.75rem);
-  font-weight: 800;
-  line-height: 1.2;
-  color: #1a1a1a;
-  margin: 0 0 14px;
-  letter-spacing: -0.02em;
-}
-
-.service-card-description {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: #6b7280;
-  margin: 0 0 24px;
-}
-
-/* ── Bullets ── */
-
-.service-card-bullets {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.service-card-bullets li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: #374151;
-}
-
-.bullet-check {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #ecfdf5;
-  color: #55c26a;
-  margin-top: 1px;
-}
-
-/* ── Learn More Link ── */
-
-.learn-more-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #55c26a;
-  text-decoration: none;
-  transition: gap 0.3s ease;
-  width: fit-content;
-}
-
-.learn-more-link:hover {
-  gap: 14px;
-}
-
-.learn-more-arrow {
-  display: flex;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.learn-more-link:hover .learn-more-arrow {
-  transform: translateX(4px);
-}
-
-/* ── Embla Controls ── */
-
-.embla-controls {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-}
-
-.embla-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  color: #374151;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.embla-btn:hover:not(:disabled) {
-  border-color: #55c26a;
-  color: #55c26a;
-  box-shadow: 0 4px 16px rgba(85, 194, 106, 0.15);
-}
-
-.embla-btn-disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
 }
