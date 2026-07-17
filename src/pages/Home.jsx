@@ -247,7 +247,7 @@ export default function Home() {
               <div className="why-img-column">
                 <div className="why-circle-accent"></div>
                 <img
-                  src="/Assets/images/Hospital 2.png"
+                  src="/Assets/images/Hospital 2.jpg"
                   className="why-img-main"
                   alt="Professional Medical Team"
                 />
