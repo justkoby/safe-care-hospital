@@ -3,7 +3,7 @@
 .new-hero-section {
   text-align: center;
   padding: clamp(120px, 12vw, 160px) 0 clamp(350px, 38vw, 650px);
-  background-image: url('/Assets/images/hospital-building.jpg');
+  background-image: url('/Assets/images/GHAHASA.png');
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -51,11 +51,15 @@
   box-shadow: 0 4px 14px rgba(0, 182, 74, 0.2);
 }
 
-.btn-services:hover {
-  background-color: var(--dark-green);
-  border-color: var(--dark-green);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 182, 74, 0.3);
+/* Hover only on devices with a real pointer (laptop/desktop) */
+@media (hover: hover) {
+  .btn-services:hover {
+    background-color: #00873a; /* fallback for --dark-green */
+    border-color: #00873a;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 182, 74, 0.3);
+  }
 }
 
 .btn-appointment {
@@ -69,11 +73,13 @@
   transition: all 0.3s ease;
 }
 
-.btn-appointment:hover {
-  border-color: var(--primary-green);
-  color: var(--primary-green) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+@media (hover: hover) {
+  .btn-appointment:hover {
+    border-color: var(--primary-green);
+    color: var(--primary-green) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
 }
 
 /* Dynamic Word Carousel Styles */
@@ -125,16 +131,26 @@
 
 @media (max-width: 575px) {
   .new-hero-section {
-    background-size: 250% auto;
-    padding-bottom: 240px;
+    background-size: 210% auto;
+    background-position: 14% bottom;
+    padding-bottom: 430px;
   }
+
+  .new-hero-title {
+    font-size: clamp(2rem, 9vw, 2.35rem);
+    line-height: 1.12;
+  }
+
+  .dynamic-word-wrapper {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
   .new-hero-actions {
     flex-direction: column;
     padding: 0 20px;
-  }
-  .new-hero-actions a {
-    width: 100%;
-    text-align: center;
+    margin-bottom: 0;
   }
 }
 

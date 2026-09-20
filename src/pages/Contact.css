@@ -70,8 +70,24 @@
   overflow: hidden;
 }
 
+.corporate-section h2,
+.corporate-section p,
+.corporate-section span,
+.corporate-section small,
+.corporate-section a {
+  color: white !important;
+}
+
+.corporate-section .opacity-75 {
+  opacity: 0.75;
+}
+
+.corporate-section .opacity-50 {
+  opacity: 0.6;
+}
+
 .corporate-section .icon-box {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   color: white;
 }
 

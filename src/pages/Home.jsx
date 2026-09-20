@@ -9,10 +9,9 @@ const words = [
   "Emergency Care",
   "Family Care",
   "Reliable Care",
-  "Patient-Centered Care",
   "Quality Healthcare",
   "Primary Care",
-  "Compassionate Care"
+  "Expert Care"
 ];
 
 export default function Home() {
