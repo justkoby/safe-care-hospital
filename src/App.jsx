@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import EmergencyTicker from './components/EmergencyTicker';
@@ -16,6 +17,7 @@ import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
+    <HelmetProvider>
     <Router>
       <ScrollToTop />
       <div className="app-container">
@@ -31,6 +33,7 @@ function App() {
         <EmergencyTicker />
       </div>
     </Router>
+    </HelmetProvider>
   );
 }
 

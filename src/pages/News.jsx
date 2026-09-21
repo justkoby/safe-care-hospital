@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import AOS from 'aos';
 import './News.css';
 
@@ -45,6 +46,14 @@ export default function News() {
 
   return (
     <div className="news-page">
+      <Helmet>
+        <title>Health News & Updates | Safe Care Hospital – Anyirawase, Ghana</title>
+        <meta name="description" content="Read the latest health tips, hospital announcements, and community outreach stories from Safe Care Hospital in Anyirawase, Volta Region, Ghana." />
+        <link rel="canonical" href="https://safecarehospital.com/news" />
+        <meta property="og:title" content="Health News & Updates | Safe Care Hospital" />
+        <meta property="og:description" content="Latest health tips, announcements and outreach news from Safe Care Hospital, Anyirawase, Ghana." />
+        <meta property="og:url" content="https://safecarehospital.com/news" />
+      </Helmet>
       {/* News Hero */}
       <header className="news-hero">
         <div className="container">

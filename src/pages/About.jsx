@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import AOS from 'aos';
 import './About.css';
 
@@ -10,6 +11,14 @@ export default function About() {
 
   return (
     <div className="about-page">
+      <Helmet>
+        <title>About Us | Safe Care Hospital – Anyirawase, Volta Region, Ghana</title>
+        <meta name="description" content="Learn about Safe Care Hospital's mission, vision, and dedicated team of healthcare professionals serving Anyirawase and the Volta Region of Ghana with compassionate 24/7 care." />
+        <link rel="canonical" href="https://safecarehospital.com/about" />
+        <meta property="og:title" content="About Us | Safe Care Hospital – Ghana" />
+        <meta property="og:description" content="Learn about Safe Care Hospital's mission, vision, and dedicated team serving Anyirawase, Volta Region, Ghana with 24/7 compassionate care." />
+        <meta property="og:url" content="https://safecarehospital.com/about" />
+      </Helmet>
       {/* Modern About Hero */}
       <header className="about-hero">
         <div className="container text-center">

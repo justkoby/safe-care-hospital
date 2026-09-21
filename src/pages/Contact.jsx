@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import AOS from 'aos';
 import './Contact.css';
 
@@ -23,8 +24,16 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form data submitted:', formData);
-    alert('Thank you for contacting us! We will get back to you shortly.');
+    const subject = encodeURIComponent(`Enquiry: ${formData.enquiryType}`);
+    const body = encodeURIComponent(
+      `Full Name: ${formData.name}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Email: ${formData.email}\n` +
+      `Type of Enquiry: ${formData.enquiryType}\n` +
+      `Preferred Date: ${formData.date || 'Not specified'}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    window.location.href = `mailto:info@safecarehospital.com?subject=${subject}&body=${body}`;
     setFormData({
       name: '',
       phone: '',
@@ -37,6 +46,14 @@ export default function Contact() {
 
   return (
     <div className="contact-page">
+      <Helmet>
+        <title>Contact Us | Safe Care Hospital – Anyirawase, Volta Region, Ghana</title>
+        <meta name="description" content="Contact Safe Care Hospital in Anyirawase, Volta Region, Ghana. Call +233 533 990 935, email info@safecarehospital.com, or send us a message for appointments and enquiries." />
+        <link rel="canonical" href="https://safecarehospital.com/contact" />
+        <meta property="og:title" content="Contact Us | Safe Care Hospital – Ghana" />
+        <meta property="og:description" content="Reach Safe Care Hospital by phone, email, or visit us in Anyirawase, Volta Region. We are available 24 hours a day." />
+        <meta property="og:url" content="https://safecarehospital.com/contact" />
+      </Helmet>
       {/* Contact Hero */}
       <section className="contact-hero">
         <div className="container" data-aos="fade-up">
@@ -130,13 +147,13 @@ export default function Contact() {
       <section className="form-section py-5" style={{ backgroundColor: '#fcfcfc' }}>
         <div className="container">
           <div className="row g-5">
-            <div className="col-lg-7" data-aos="fade-right">
+            <div className="col-12" data-aos="fade-up">
               <div className="contact-form-wrapper">
                 <h3 className="fw-bold mb-2">Send Us A Message</h3>
-                <p className="text-muted mb-4">General Enquiries & Appointment Requests</p>
+                <p className="text-muted mb-4">General Enquiries &amp; Appointment Requests</p>
                 <form onSubmit={handleSubmit}>
                   <div className="row g-3">
-                    <div className="col-md-6">
+                    <div className="col-md-4">
                       <input
                         type="text"
                         name="name"
@@ -147,7 +164,7 @@ export default function Contact() {
                         placeholder="Full Name"
                       />
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-4">
                       <input
                         type="tel"
                         name="phone"
@@ -158,7 +175,7 @@ export default function Contact() {
                         placeholder="Phone Number"
                       />
                     </div>
-                    <div className="col-12">
+                    <div className="col-md-4">
                       <input
                         type="email"
                         name="email"
@@ -202,7 +219,7 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         className="form-control"
-                        rows="5"
+                        rows="7"
                         placeholder="Your Message"
                       ></textarea>
                     </div>
@@ -210,41 +227,15 @@ export default function Contact() {
                       <button className="btn btn-success w-100 py-3 fw-bold rounded-pill mb-3" type="submit">
                         Submit Request
                       </button>
+                      <p className="text-center text-muted small mb-0">
+                        Your message will be sent to{' '}
+                        <a href="mailto:info@safecarehospital.com" className="text-success fw-semibold text-decoration-none">
+                          info@safecarehospital.com
+                        </a>
+                      </p>
                     </div>
                   </div>
                 </form>
-              </div>
-            </div>
-
-            <div className="col-lg-5" data-aos="fade-left">
-              <div className="corporate-section h-100 d-flex flex-column justify-content-center">
-                <span className="text-success fw-bold small mb-2 text-uppercase" style={{ letterSpacing: '2px' }}>
-                  Partnerships
-                </span>
-                <h2 className="fw-bold mb-4">Corporate Medical Services</h2>
-                <p className="opacity-75 mb-5 lead">
-                  For pre-employment screening, annual medicals, and workforce health solutions, contact our administration team.
-                </p>
-                <div className="contact-details-corporate">
-                  <div className="d-flex align-items-center mb-4">
-                    <div className="icon-box m-0 me-3 bg-success text-white">
-                      <i className="fa-solid fa-phone"></i>
-                    </div>
-                    <div>
-                      <small className="d-block opacity-50">Call Administration</small>
-                      <span className="fs-5 fw-bold">+233 533 990 935</span>
-                    </div>
-                  </div>
-                  <div className="d-flex align-items-center mb-4">
-                    <div className="icon-box m-0 me-3 bg-success text-white">
-                      <i className="fa-solid fa-envelope"></i>
-                    </div>
-                    <div>
-                      <small className="d-block opacity-50">Email Support</small>
-                      <span className="fs-5 fw-bold">info@safecarehospital.com</span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

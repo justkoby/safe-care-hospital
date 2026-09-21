@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import AOS from 'aos';
 import ServicesCarousel from '../components/ServicesCarousel';
 import './Home.css';
@@ -60,6 +61,14 @@ export default function Home() {
 
   return (
     <div className="home-page">
+      <Helmet>
+        <title>Safe Care Hospital | 24/7 Healthcare in Anyirawase, Volta Region – Ghana</title>
+        <meta name="description" content="Safe Care Hospital is the primary hospital in Anyirawase, Volta Region, offering 24/7 emergency care, antenatal services, laboratory services, and compassionate family healthcare." />
+        <link rel="canonical" href="https://safecarehospital.com/" />
+        <meta property="og:title" content="Safe Care Hospital | 24/7 Healthcare in Anyirawase, Ghana" />
+        <meta property="og:description" content="Safe Care Hospital is the primary hospital in Anyirawase, Volta Region, offering 24/7 emergency care, antenatal services, laboratory services, and compassionate family healthcare." />
+        <meta property="og:url" content="https://safecarehospital.com/" />
+      </Helmet>
       {/* Centered Redesigned Hero Section */}
       <header className="new-hero-section">
         <div className="container">

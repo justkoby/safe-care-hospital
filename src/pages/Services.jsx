@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import AOS from 'aos';
 import './Services.css';
 
@@ -86,6 +87,14 @@ export default function Services() {
 
   return (
     <div className="services-page">
+      <Helmet>
+        <title>Our Services | Safe Care Hospital – Emergency, Antenatal & Lab Services in Ghana</title>
+        <meta name="description" content="Explore Safe Care Hospital's full range of medical services including emergency care, antenatal & delivery, laboratory services, corporate medicals, and general outpatient consultations in Anyirawase, Ghana." />
+        <link rel="canonical" href="https://safecarehospital.com/services" />
+        <meta property="og:title" content="Our Services | Safe Care Hospital – Ghana" />
+        <meta property="og:description" content="Emergency care, antenatal services, laboratory, corporate medicals, and general consultations at Safe Care Hospital, Anyirawase, Ghana." />
+        <meta property="og:url" content="https://safecarehospital.com/services" />
+      </Helmet>
       {/* Hero */}
       <section className="services-hero">
         <div className="services-hero-bg"></div>
